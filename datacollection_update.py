@@ -26,10 +26,11 @@ with open(jsonfilepath,'r') as fid:
       tweet = json.load(fid)
 
 
-user_timeline = twitter.get_user_timeline(screen_name=handle,count=1) #get most recent tweet
+user_timeline = twitter.get_user_timeline(screen_name=handle,count=1,
+                                         tweet_mode='extended') #get most recent tweet
 lis = user_timeline[0]['id']-1 #tweet id # for most recent tweet
 incremental = twitter.get_user_timeline(screen_name=handle,
-      count = 200, include_retweets = True, max_id=lis)
+      count = 200, include_retweets = True, max_id=lis,tweet_mode='extended')
 user_timeline.extend(incremental)
 lis = user_timeline[-1]['id']-1
 date = user_timeline[-1]['created_at'].encode('ascii','ignore')

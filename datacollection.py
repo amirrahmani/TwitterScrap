@@ -21,7 +21,8 @@ ACCESS_TOKEN=twitter.obtain_access_token()
 twitter=Twython(APP_KEY,access_token=ACCESS_TOKEN)
  
 # Adapted from http://www.craigaddyman.com/mining-all-tweets-with-python/
-user_timeline = twitter.get_user_timeline(screen_name=handle,count=1) # get most recent tweet
+user_timeline = twitter.get_user_timeline(screen_name=handle,count=1,
+                                         tweet_mode='extended') # get most recent tweet
 lis = user_timeline[0]['id']-1 #tweet id # for most recent tweet
 
 # Query as deep as necessary
@@ -36,7 +37,7 @@ if cycles>16:
 
 for i in range(cycles): # iterate through each cycle and read 200 tweets each time
       incremental = twitter.get_user_timeline(screen_name=handle,
-      count=200, include_retweets=True, max_id=lis)
+      count=200, include_retweets=True, max_id=lis,tweet_mode='extended')
       user_timeline.extend(incremental)
       lis = user_timeline[-1]['id']-1 # update the last tweet id
       if i<cycles-1:
