@@ -45,9 +45,11 @@ for i in range(0, cycles): ## iterate through all tweets up to max of 3200
  
 
 with open(txtfilepath,'wt') as fid:
-      for d in reversed(user_timeline):
-            fid.write(d['created_at'])#+ ' , ' +\
-#                      d['text'].encode('ascii','ignore'))
+      for d in user_timeline:
+            tweet['date'].append(d['created_at'])
+            tweet['text'].append(d['text'])
+            fid.write(d['created_at'])
             fid.write("\n")
 
-
+with open(jsonfilepath,'w') as fid:
+      json.dump(tweet,fid)
