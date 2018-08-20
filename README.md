@@ -1,6 +1,6 @@
 # TwitterTools
 
-## These are set of scripts to extract tweets from user defined accounts and perform some counting on the tweets.
+## Scripts to extract tweets from user defined accounts and counting tweets.
 
 ### tweet_notification.py is a simple notifaction tool. On a tweet from the specified account it send text and also show a desktop notification. Sending text requires account on Twilio.
 
